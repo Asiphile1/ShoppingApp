@@ -1,0 +1,17 @@
+{
+    "lists": [
+      {
+        "id": 1,
+        "name": "Groceries",
+        "items": [
+          {
+            "id": 1,
+            "name": "Milk",
+            "quantity": "2",
+            "notes": "Low fat"
+          }
+        ]
+      }
+    ]
+  }
+  
