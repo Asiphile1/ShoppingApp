@@ -11,7 +11,7 @@ const List = ({ items = [] }) => {
                     </div>
                 ))
             ) : (
-                <p>No items to display.</p>
+                <p>at least.</p>
             )}
         </div>
     );
