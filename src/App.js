@@ -1,27 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 import ListContainer from './components/ListContainer';
+import PrivateRoute from './components/PrivateRoute';
 
 
 
 
 const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/" element={<LoginPage />} />
-      </Routes>
-    </Router>
-  );
-};
+    return (
+        <AuthProvider>
+          <Router>
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegistrationPage />} />
+              <Route path="/home" element={<PrivateRoute element={HomePage} />} />
+              <Route path="/" element={<LoginPage />} />
+            </Routes>
+          </Router>
+        </AuthProvider>
+      );
+    };
 
 export default App;
 

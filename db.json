@@ -1,17 +1,33 @@
 {
-    "lists": [
-      {
-        "id": 1,
-        "name": "Groceries",
-        "items": [
-          {
-            "id": 1,
-            "name": "Milk",
-            "quantity": "2",
-            "notes": "Low fat"
-          }
-        ]
-      }
-    ]
-  }
-  
+  "lists": [
+    {
+      "id": 1,
+      "name": "Groceries",
+      "items": [
+        {
+          "id": 1,
+          "name": "Milk",
+          "quantity": "2",
+          "notes": "Low fat"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "f3ab",
+      "username": "asi",
+      "password": "1234"
+    },
+    {
+      "id": "6f66",
+      "username": "asi@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "a962",
+      "username": "asii@gmail.com",
+      "password": "123456"
+    }
+  ]
+}

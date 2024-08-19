@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './LoginPage.css';
 import './RegistrationPage';
 // import '/src/assets/cover2.webp';  no need to import it here
 
 const LoginPage = () => {
+  const { login } = useAuth();  
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -12,18 +14,38 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+        const response = await fetch('http://localhost:5000/users');
+        const users = await response.json();
+//   console.log(response, users)
+
+        const user = users.find(
+          (user) => user.username === username && user.password === password
+        );
+  
+        if (user) {
+          localStorage.setItem('user', JSON.stringify({ username }));
+          login();
+          navigate('/home');
+        } else {
+          setError('Invalid username or password');
+        }
+      } catch (error) {
+        setError('Failed to login. Please try again.');
+      }
     
      
-     if (username === 'user' && password === 'password') {
+    //  if (username === 'user' && password === 'password') {
        
-        localStorage.setItem('user', JSON.stringify({ username }));
+    //     localStorage.setItem('user', JSON.stringify({ username }));
   
         
-        navigate('/home');
-      } else {
-        alert('Invalid username or password');
-      }
-      navigate('/home')
+    //     navigate('/home');
+    //   } else {
+    //     alert('Invalid username or password');
+    //   }
+    //   navigate('/home')
     };
 
   return (
