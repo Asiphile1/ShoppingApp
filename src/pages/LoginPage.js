@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
+import './RegistrationPage';
 // import '/src/assets/cover2.webp';  no need to import it here
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
      
@@ -21,12 +23,14 @@ const LoginPage = () => {
       } else {
         alert('Invalid username or password');
       }
+      navigate('/home')
     };
 
   return (
     <div className="login-page">
       <div className="login-form-container">
         <h2>Login</h2>
+        {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -44,6 +48,7 @@ const LoginPage = () => {
           />
           <button type="submit">Login</button>
         </form>
+        <p>Don't have an account? <a href="/register">Register here</a></p>
       </div>
     </div>
   );

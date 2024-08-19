@@ -4,29 +4,65 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import RegistrationPage from './pages/RegistrationPage';
 import ListContainer from './components/ListContainer';
 
+
+
+
 const App = () => {
-
-    const isAuthenticated = !!localStorage.getItem('user');
-
-
-    return (
-        <Provider store={store}>
-            <Router>
-                <Routes>
-                    <Route path="/" element={<LoginPage />} />
-                    <Route 
-                     path="/home" 
-                    element={isAuthenticated ? <HomePage /> : <Navigate to="/" />} 
-                />
-            </Routes>
-      </Router>
-    </Provider>
-    );
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </Router>
+  );
 };
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const App = () => {
+
+//     const isAuthenticated = !!localStorage.getItem('user');
+
+
+//  return (
+//     <Provider store={store}>
+//       <Router>
+//         <Routes>
+//           <Route path="/" element={<Navigate to="/login" />} />
+//           <Route path="/login" element={<LoginPage />} />
+//           <Route path="/register" element={<RegistrationPage />} />
+//           <Route 
+//             path="/home" 
+//             element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} 
+//           />
+//           {/* Add other routes here */}
+//         </Routes>
+//       </Router>
+//     </Provider>
+//   );
+// };
+
+// export default App;
 
 
 

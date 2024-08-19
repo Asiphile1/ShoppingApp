@@ -1,25 +1,26 @@
-.login-page {
+
+.registration-page {
     height: 100vh;
-    background: url('/public/cover2.webp') no-repeat center center;
+    background: url('/public/registration.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .login-form-container {
+}
+
+.registration-form-container {
     background-color: rgba(255, 255, 255, 0.8); 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .login-form-container h2 {
+.registration-form-container h2 {
     margin-bottom: 20px;
     color: #003049;
 }
 
-.login-form-container input {
+.registration-form-container input {
     display: block;
     width: 100%;
     padding: 10px;
@@ -28,7 +29,7 @@
     border-radius: 4px;
 }
 
-.login-form-container button {
+.registration-form-container button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -40,21 +41,21 @@
     font-size: 16px;
 }
 
-.login-form-container button:hover {
+.registration-form-container button:hover {
     background-color: #D62828;
 }
 
-.login-form-container p {
+.registration-form-container p {
     margin-top: 10px;
     color: #003049;
 }
 
-.login-form-container a {
+.registration-form-container a {
     color: #D62828;
     text-decoration: none;
 }
 
-.login-form-container a:hover {
+.registration-form-container a:hover {
     text-decoration: underline;
 }
 
@@ -62,4 +63,3 @@
     color: #D62828;
     margin-bottom: 15px;
 }
-  
