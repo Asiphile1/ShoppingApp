@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem } from '../features/shoppingList/shoppingListActions';
+import './ListContainer.css'
 
 function ListContainer() {
   const listItems = useSelector((state) => state.shoppingList);
@@ -31,6 +32,8 @@ function ListContainer() {
               <td>{item.notes}</td>
               <td>{item.category}</td>
               <td>
+                <button onClick={() => handleRemove(index)}>Edit</button>
+                <button onClick={() => handleRemove(index)}>Share</button>
                 <button onClick={() => handleRemove(index)}>Remove</button>
               </td>
             </tr>

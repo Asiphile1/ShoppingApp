@@ -5,7 +5,7 @@ const Header = ({ searchQuery, setSearchQuery }) => {
     return (
         <header className="hero-section">
             <div className="search-overlay">
-                <h1>Search Your List</h1>
+                <h1>Search Your Lists</h1>
                 <input
                     type="text"
                     value={searchQuery}
