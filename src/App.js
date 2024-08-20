@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import HomePage from './pages/HomePage';
+import ListPage from './pages/ListPage';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 import ListContainer from './components/ListContainer';
@@ -17,10 +18,11 @@ const App = () => {
         <AuthProvider>
           <Router>
             <Routes>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegistrationPage />} />
-              <Route path="/home" element={<PrivateRoute element={HomePage} />} />
-              <Route path="/" element={<LoginPage />} />
+            <Route path="/home" element={<HomePage />} />
+        <Route path="/list" element={<ListPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/" element={<LoginPage />} />
             </Routes>
           </Router>
         </AuthProvider>

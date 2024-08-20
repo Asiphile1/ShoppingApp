@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItem } from '../redux/actions';
+import { addItem } from '../features/shoppingList/shoppingListActions';
 import { useNavigate } from 'react-router-dom';
+import './ListPage.css'
 
 function ListPage() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function ListPage() {
   };
 
   return (
-    <div className="list-page" style={{ backgroundImage: 'url(your-background-image.jpg)', backgroundSize: 'cover' }}>
+    <div className="list-page" style={{ backgroundImage: 'url(https://i.pinimg.com/236x/e2/7d/cd/e27dcdb2d82b56dc00498a959f523270.jpg)', backgroundSize: 'cover' }}>
       <form className="list-form" onSubmit={handleSubmit}>
         <h2>Add a New Item</h2>
         <input type="text" placeholder="Item Name" value={itemName} onChange={(e) => setItemName(e.target.value)} required />
