@@ -1,23 +1,44 @@
-import React from 'react';
-import './LoginPage.css';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../redux/actions';
+import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+function ListPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [itemName, setItemName] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [notes, setNotes] = useState('');
+  const [category, setCategory] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newItem = { itemName, quantity, notes, category };
+    dispatch(addItem(newItem));
+    navigate('/home');
+  };
+
   return (
-    <div className="login-page">
-      <div className="login-form-container">
-        <h2>Login</h2>
-        <form>
-          <input type="text" placeholder="Username" />
-          <input type="password" placeholder="Password" />
-          <button type="submit">Login</button>
-        </form>
-      </div>
+    <div className="list-page" style={{ backgroundImage: 'url(your-background-image.jpg)', backgroundSize: 'cover' }}>
+      <form className="list-form" onSubmit={handleSubmit}>
+        <h2>Add a New Item</h2>
+        <input type="text" placeholder="Item Name" value={itemName} onChange={(e) => setItemName(e.target.value)} required />
+        <input type="number" placeholder="Quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} required />
+        <textarea placeholder="Notes" value={notes} onChange={(e) => setNotes(e.target.value)} />
+        <select value={category} onChange={(e) => setCategory(e.target.value)} required>
+          <option value="" disabled>Select Category</option>
+          <option value="food">Food</option>
+          <option value="appliances">Appliances</option>
+          <option value="medical">Medical Supplies</option>
+          <option value="other">Other</option>
+        </select>
+        <button type="submit">Add to List</button>
+      </form>
     </div>
   );
-};
+}
 
-export default LoginPage;
-
+export default ListPage;
 
 
 

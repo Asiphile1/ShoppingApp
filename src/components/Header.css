@@ -1,0 +1,29 @@
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-image: url('/public/img\ banner.jpg'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fff;
+}
+
+.search-overlay input {
+    padding: 10px;
+    margin-top: 10px;
+    width: 300px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.8);
+}

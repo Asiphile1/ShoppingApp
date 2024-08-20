@@ -11,7 +11,7 @@ const List = ({ items = [] }) => {
                     </div>
                 ))
             ) : (
-                <p>at least.</p>
+                <p></p>
             )}
         </div>
     );
