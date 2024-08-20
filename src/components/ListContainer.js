@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem } from '../redux/actions';
+import { removeItem } from '../features/shoppingList/shoppingListActions';
 
 function ListContainer() {
   const listItems = useSelector((state) => state.shoppingList);

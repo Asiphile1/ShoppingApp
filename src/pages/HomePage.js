@@ -1,6 +1,6 @@
 // import React from 'react';
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import ListContainer from '../components/ListContainer';
@@ -26,17 +26,28 @@ import './HomePage.css';
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Logic to handle logout
+    
+    navigate('/login');
+
   };
+
+
+  const handleAddItem = () => {
+    navigate('/list');  
+  };
+
+
 
   return (
     <div className="homepage">
       <Navbar onLogout={handleLogout} />
       <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <button onClick={handleAddItem}>Add Item</button> 
       <ListContainer searchQuery={searchQuery} />
-      <ListForm />
+     
     </div>
   );
 };

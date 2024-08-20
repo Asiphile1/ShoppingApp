@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import shoppingListReducer from './shoppingListReducer';
+import shoppingListReducer from './rootReducer';
 
 const store = configureStore({
   reducer: {
     shoppingList: shoppingListReducer,
-    // other reducers
+    
   },
 });
 
