@@ -14,19 +14,17 @@ function ListContainer() {
     dispatch(removeItem(index));
   };
 
-
   const handleEdit = (item, index) => {
     dispatch(setItemToEdit(item, index));
     navigate('/list'); 
   };
 
   const handleShare = (item) => {
-    const subject = encodeURIComponent(`Check out this item on my shopping list: ${item.name}`);
-    const body = encodeURIComponent(`Item Name: ${item.name}\nQuantity: ${item.quantity}\nNotes: ${item.notes}\nCategory: ${item.category}`);
+    const subject = encodeURIComponent(`Check out this item on my shopping list: ${item.itemName}`);
+    const body = encodeURIComponent(`Item Name: ${item.itemName}\nQuantity: ${item.quantity}\nNotes: ${item.notes}\nCategory: ${item.category}`);
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
   };
 
-  
   return (
     <div className="list-container">
       <h2>Your Shopping List</h2>
@@ -41,18 +39,18 @@ function ListContainer() {
           </tr>
         </thead>
         <tbody>
-        {Array.isArray(listItems) ? (
-          listItems.map((item, index) => (
-            <tr key={index}>
-              <td>{item.itemName}</td>
-              <td>{item.quantity}</td>
-              <td>{item.notes}</td>
-              <td>{item.category}</td>
-              <td>
-                <button onClick={() => handleEdit(index)}>Edit</button>
-                <button onClick={() => handleShare(index)}>Share</button>
-                <button onClick={() => handleRemove(index)}>Remove</button>
-              </td>
+          {Array.isArray(listItems) ? (
+            listItems.map((item, index) => (
+              <tr key={index}>
+                <td>{item.itemName}</td>
+                <td>{item.quantity}</td>
+                <td>{item.notes}</td>
+                <td>{item.category}</td>
+                <td>
+                  <button onClick={() => handleEdit(item, index)}>Edit</button>
+                  <button onClick={() => handleShare(item)}>Share</button> {/* Pass the item here */}
+                  <button onClick={() => handleRemove(index)}>Remove</button>
+                </td>
               </tr>
             ))
           ) : (
