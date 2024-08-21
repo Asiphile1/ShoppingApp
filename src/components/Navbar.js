@@ -7,7 +7,7 @@ function Navbar() {
     const navigate = useNavigate();
   
     const handleLogout = () => {
-      // Perform any necessary logout operations here (e.g., clearing auth state)
+      
       navigate('/login');
     };
   

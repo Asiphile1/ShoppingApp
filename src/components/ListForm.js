@@ -1,19 +1,35 @@
-// ListForm.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeItem, setItemToEdit } from '../features/shoppingList/shoppingListActions'; // Import setItemToEdit
 import './ListForm.css';
+import { useNavigate } from 'react-router-dom'; 
+import { updateItem } from '../features/shoppingList/shoppingListActions';
+import { addItem } from '../features/shoppingList/shoppingListActions';
 
-const ListForm = ({ addItem }) => {
+const ListForm = () => {
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [newItem, setNewItem] = useState(null); // To store and display new item details
+  const itemToEdit = useSelector((state) => state.shoppingList.itemToEdit);
+  const editIndex = useSelector((state) => state.shoppingList.editIndex);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (itemToEdit) {
+      setName(itemToEdit.name);
+      setQuantity(itemToEdit.quantity);
+    }
+  }, [itemToEdit]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const item = { name, quantity };
-    addItem(item);
-    setNewItem(item); //  the invisible div
-    setName('');
-    setQuantity('');
+    if (itemToEdit) {
+      dispatch(updateItem(item, editIndex));
+    } else {
+      dispatch(addItem(item));
+    }
+    navigate('/'); 
   };
 
   return (
@@ -31,16 +47,16 @@ const ListForm = ({ addItem }) => {
           onChange={(e) => setQuantity(e.target.value)}
           placeholder="Quantity"
         />
-        <button type="submit">Add Item</button>
+        <button type="submit">{itemToEdit ? 'Update Item' : 'Add Item'}</button>
       </form>
 
-      {newItem && (
+      {/* {newItem && (
         <div className="new-added-item">
           <h3>New Item Added</h3>
           <p>Name: {newItem.name}</p>
           <p>Quantity: {newItem.quantity}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
